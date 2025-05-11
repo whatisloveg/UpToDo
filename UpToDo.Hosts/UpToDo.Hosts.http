@@ -1,0 +1,6 @@
+@UpToDo.Hosts_HostAddress = http://localhost:5136
+
+GET {{UpToDo.Hosts_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

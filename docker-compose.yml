@@ -1,0 +1,6 @@
+﻿services:
+  uptodo.hosts:
+    image: uptodo.hosts
+    build:
+      context: .
+      dockerfile: UpToDo.Hosts/Dockerfile
