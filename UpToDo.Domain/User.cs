@@ -24,7 +24,12 @@ public class User(string name, string email, string passwordHash)
     public string Email { get; set; } = email;
     
     /// <summary>
-    /// Хеш паролья пользователя
+    /// Хеш пароля пользователя
     /// </summary>
     public string PasswordHash  { get; set; } = passwordHash;
+
+    /// <summary>
+    /// Список задач, принадлежащих пользователю.
+    /// </summary>
+    public List<TasksList>? TasksLists { get; set; } = new();
 }

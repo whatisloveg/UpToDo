@@ -24,5 +24,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         cfg.Property(u => u.PasswordHash)
             .IsRequired()
             .HasMaxLength(255);
+        
+        cfg.HasMany(u => u.TasksLists)
+            .WithOne(tl => tl.User)
+            .HasForeignKey(tl => tl.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
