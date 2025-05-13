@@ -14,6 +14,7 @@ public class UsersRepository(DataBaseContext context) : IUsersRepository
     public async Task AddAsync(User user, CancellationToken ct = default)
     {
         await context.Users.AddAsync(user, ct);
+        await context.SaveChangesAsync(ct);
     }
 
     /// <inheritdoc/>

@@ -13,8 +13,7 @@ namespace UpToDo.Application.Users.Commands;
 public class RegisterUserHandler(
     IUsersRepository usersRepository,
     IPasswordHasher passwordHasher,
-    IJwtTokenGenerator jwtTokenGenerator,
-    IUnitOfWork unitOfWork)
+    IJwtTokenGenerator jwtTokenGenerator)
     : IRequestHandler<RegisterUserCommand, TokenResponse>
 {
     /// <summary>
@@ -35,7 +34,6 @@ public class RegisterUserHandler(
         
         var user = new User(command.Name, command.Email, passwordHasher.Hash(command.Password));
         await usersRepository.AddAsync(user, ct);
-        await unitOfWork.CommitAsync(ct);  
         return new(jwtTokenGenerator.Generate(user));
     }
 }

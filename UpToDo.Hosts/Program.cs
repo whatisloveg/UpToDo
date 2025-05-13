@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
@@ -52,7 +51,6 @@ builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 
 builder.Services.AddScoped<IPasswordHasher, BcryptHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-builder.Services.AddScoped<IUnitOfWork, EfUnitOfWork>();
 
 
 builder.Services.AddMediatR(cfg =>
