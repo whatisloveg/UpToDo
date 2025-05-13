@@ -68,8 +68,8 @@ namespace UpToDo.Hosts.Controllers
         /// <summary>
         /// Удаление задачи.
         /// </summary>  
-        [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             var command = new DeleteToDoTaskCommand { Id = id };
             var response = await mediator.Send(command);

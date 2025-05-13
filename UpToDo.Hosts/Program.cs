@@ -8,6 +8,8 @@ using UpToDo.Application.Shared.Exceptions;
 using UpToDo.Application.Shared.Repositories;
 using UpToDo.Application.Tasks.Commands;
 using UpToDo.Application.Tasks.Queries;
+using UpToDo.Application.TasksLists.Commands;
+using UpToDo.Application.TasksLists.Queries;
 using UpToDo.Application.Users.Commands;
 using UpToDo.Infrastructure.DataAccess;
 using UpToDo.Infrastructure.DataAccess.Repositories;
@@ -69,6 +71,12 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<UpdateToDoTaskCommand>();
     cfg.RegisterServicesFromAssemblyContaining<GetAllToDoTasksQuery>();
     cfg.RegisterServicesFromAssemblyContaining<GetToDoTaskByIdQuery>();
+    
+    cfg.RegisterServicesFromAssemblyContaining<CreateTasksListCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<DeleteTasksListCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<UpdateTasksListCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<GetAllTasksListsByUserIdQuery>();
+    cfg.RegisterServicesFromAssemblyContaining<GetTasksListByIdQuery>();
 });
 
 var app = builder.Build();
