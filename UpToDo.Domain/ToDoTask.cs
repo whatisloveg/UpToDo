@@ -15,12 +15,12 @@ public class ToDoTask
     /// <summary>
     /// Название задачи.
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string? Name { get; set; } = string.Empty;
     
     /// <summary>
     /// Описание задачи.
     /// </summary>
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; } = string.Empty;
     
     /// <summary>
     /// Приоритет по матрице Эйзенхауэра

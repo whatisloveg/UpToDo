@@ -4,7 +4,7 @@ using UpToDo.Domain;
 
 namespace UpToDo.Infrastructure.DataAccess.Repositories;
 
-public class TaskListRepository(DataBaseContext context) : ITasksListRepository
+public class TasksListRepository(DataBaseContext context) : ITasksListRepository
 { 
     public async Task AddAsync(TasksList tasksList)
     {

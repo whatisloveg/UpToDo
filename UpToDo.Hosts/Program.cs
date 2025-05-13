@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using UpToDo.Application.Shared.Common;
 using UpToDo.Application.Shared.Exceptions;
 using UpToDo.Application.Shared.Repositories;
+using UpToDo.Application.Tasks.Commands;
+using UpToDo.Application.Tasks.Queries;
 using UpToDo.Application.Users.Commands;
 using UpToDo.Infrastructure.DataAccess;
 using UpToDo.Infrastructure.DataAccess.Repositories;
@@ -48,15 +50,25 @@ builder.Services.AddDbContext<DataBaseContext>(opt =>
 
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IToDoTaskRepository, ToDoTaskRepository>();
+builder.Services.AddScoped<ISubtaskRepository, SubtaskRepository>();
+builder.Services.AddScoped<ITasksListRepository, TasksListRepository>();
 
 builder.Services.AddScoped<IPasswordHasher, BcryptHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
 
 
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining<RegisterUserCommand>();
     cfg.RegisterServicesFromAssemblyContaining<LoginUserCommand>();
+    
+    cfg.RegisterServicesFromAssemblyContaining<CreateToDoTaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<DeleteToDoTaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<UpdateToDoTaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<GetAllToDoTasksQuery>();
+    cfg.RegisterServicesFromAssemblyContaining<GetToDoTaskByIdQuery>();
 });
 
 var app = builder.Build();
