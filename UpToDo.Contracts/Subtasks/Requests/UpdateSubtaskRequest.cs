@@ -5,7 +5,6 @@
 /// </summary>
 public sealed record UpdateSubtaskRequest(
     Guid Id,              // Идентификатор подзадачи
-    string Name,          // Название подзадачи
-    decimal? EstimatedTime, // Время, выделенное на подзадачу
+    string? Name,          // Название подзадачи
     bool IsCompleted      // Статус выполнения подзадачи
 );

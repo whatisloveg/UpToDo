@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using UpToDo.Application.Shared.Common;
 using UpToDo.Application.Shared.Exceptions;
 using UpToDo.Application.Shared.Repositories;
+using UpToDo.Application.Subtasks.Commands;
+using UpToDo.Application.Subtasks.Queries;
 using UpToDo.Application.Tasks.Commands;
 using UpToDo.Application.Tasks.Queries;
 using UpToDo.Application.TasksLists.Commands;
@@ -77,6 +79,13 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<UpdateTasksListCommand>();
     cfg.RegisterServicesFromAssemblyContaining<GetAllTasksListsByUserIdQuery>();
     cfg.RegisterServicesFromAssemblyContaining<GetTasksListByIdQuery>();
+    
+    
+    cfg.RegisterServicesFromAssemblyContaining<CreateSubtaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<DeleteSubtaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<UpdateSubtaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<GetSubtaskByIdQuery>();
+    cfg.RegisterServicesFromAssemblyContaining<GetSubtasksByTaskIdQuery>();
 });
 
 var app = builder.Build();

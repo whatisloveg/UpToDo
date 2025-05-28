@@ -16,6 +16,11 @@ public interface ISubtaskRepository
     /// Получение подзадачи по Id.
     /// </summary>
     Task<Subtask?> GetByIdAsync(Guid id);
+    
+    /// <summary>
+    /// Получение подзадач по Id todoTask.
+    /// </summary>
+    Task<List<Subtask>> GetByTodoTaskAsync(Guid toDoTaskId);
 
     /// <summary>
     /// Обновление подзадачи.
