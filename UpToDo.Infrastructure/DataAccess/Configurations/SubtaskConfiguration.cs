@@ -14,10 +14,7 @@ public class SubtaskConfiguration: IEntityTypeConfiguration<Subtask>
         builder.Property(st => st.Name)
             .IsRequired()
             .HasMaxLength(500);
-
-        builder.Property(st => st.EstimatedTime)
-            .IsRequired(false);
-
+        
         builder.Property(st => st.IsCompleted)
             .HasDefaultValue(false);
         

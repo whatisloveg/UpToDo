@@ -15,12 +15,6 @@ public class Subtask
     /// </summary>
     public string Name { get; set; } = string.Empty;
     
-    //TODO: снести отсюда, это бесплолезно + мигарцию бахнуть
-    /// <summary>
-    /// Время выделенное на подзадачу.
-    /// </summary>
-    public decimal? EstimatedTime { get; set; } = null;
-    
     /// <summary>
     /// Выполнена ли подзадача.
     /// </summary>
