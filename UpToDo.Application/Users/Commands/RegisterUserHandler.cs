@@ -34,6 +34,6 @@ public class RegisterUserHandler(
         
         var user = new User(command.Name, command.Email, passwordHasher.Hash(command.Password));
         await usersRepository.AddAsync(user, ct);
-        return new(jwtTokenGenerator.Generate(user));
+        return new(jwtTokenGenerator.Generate(user), user.Id);
     }
 }

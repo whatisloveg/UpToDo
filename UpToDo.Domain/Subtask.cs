@@ -15,6 +15,7 @@ public class Subtask
     /// </summary>
     public string Name { get; set; } = string.Empty;
     
+    //TODO: снести отсюда, это бесплолезно + мигарцию бахнуть
     /// <summary>
     /// Время выделенное на подзадачу.
     /// </summary>
@@ -28,7 +29,7 @@ public class Subtask
     /// <summary>
     /// Дата создания подзадача.
     /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
     /// <summary>
     /// Дата завершения подзадача.

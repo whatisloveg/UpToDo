@@ -18,7 +18,7 @@ public class TasksList
     /// <summary>
     /// Дата создания списка задач.
     /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
     /// <summary>
     /// Задачи в списке

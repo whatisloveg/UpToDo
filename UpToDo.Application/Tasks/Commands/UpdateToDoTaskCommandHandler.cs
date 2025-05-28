@@ -15,11 +15,27 @@ public class UpdateToDoTaskCommandHandler(IToDoTaskRepository repository) : IReq
             throw new TaskNotFoundException();
         }
 
-        task.Name = request.Name;
-        task.Description = request.Description;
-        task.EstimatedTime = request.EstimatedTime;
-        task.IsCompleted = request.IsCompleted;
+        if (request.Name != null)
+        {
+            task.Name = request.Name;
+        }
 
+        if (request.Description != null)
+        {
+            task.Description = request.Description;
+        }
+
+        if (request.EstimatedTime != null)
+        {
+            task.EstimatedTime = request.EstimatedTime;
+        }
+
+        if (request.IsCompleted)
+        {
+            task.IsCompleted = request.IsCompleted;
+            task.CompletedAt = DateTime.UtcNow;
+        }
+        
         await repository.UpdateAsync(task);
         return new UpdateToDoTaskResponse(true); 
     }

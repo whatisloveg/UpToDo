@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UpToDo.Application.Tasks.Commands;
 using UpToDo.Application.Tasks.Queries;
@@ -8,6 +9,7 @@ namespace UpToDo.Hosts.Controllers
 {
     [Route("tasks")]
     [ApiController]
+    [Authorize]
     public class ToDoTasksController(IMediator mediator) : ControllerBase
     {
         /// <summary>

@@ -47,16 +47,16 @@ namespace UpToDo.Hosts.Controllers
                 return BadRequest("Id не может быть пустым");
             }
             var command = new UpdateTasksListCommand(request.Id, request.Name);
-            await mediator.Send(command);
-            return NoContent();
+            var result = await mediator.Send(command);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var command = new DeleteTasksListRequest(id);
-            await mediator.Send(command);
-            return NoContent();
+            var command = new DeleteTasksListCommand(id);
+            var result = await mediator.Send(command);
+            return Ok(result);
         }
     }
 }

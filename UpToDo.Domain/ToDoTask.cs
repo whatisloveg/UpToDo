@@ -35,12 +35,12 @@ public class ToDoTask
     /// <summary>
     /// Выполнена ли задача.
     /// </summary>
-    public bool IsCompleted = false;
+    public bool IsCompleted { get; set; }= false;
     
     /// <summary>
     /// Дата создания задачи.
     /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
     /// <summary>
     /// Дата завершения задачи.

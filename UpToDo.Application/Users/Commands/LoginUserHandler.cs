@@ -40,6 +40,6 @@ public class LoginUserHandler(IUsersRepository users, IPasswordHasher hasher, IJ
         }
         
         string token = jwt.Generate(user);
-        return new TokenResponse(token);
+        return new TokenResponse(token, user.Id);
     }
 }
