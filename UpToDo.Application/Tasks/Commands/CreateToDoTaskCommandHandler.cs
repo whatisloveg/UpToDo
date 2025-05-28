@@ -13,8 +13,6 @@ public class CreateToDoTaskCommandHandler(IToDoTaskRepository repository)  : IRe
         var task = new ToDoTask
         {
             Name = request.Name,
-            Description = request.Description,
-            EstimatedTime = request.EstimatedTime,
             TasksListId = request.TasksListId
         };
 

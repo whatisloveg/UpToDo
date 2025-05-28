@@ -19,8 +19,6 @@ namespace UpToDo.Hosts.Controllers
             var command = new CreateToDoTaskCommand
             {
                 Name = request.Name,
-                Description = request.Description,
-                EstimatedTime = request.EstimatedTime,
                 TasksListId = request.TasksListId
             };
 
