@@ -22,5 +22,8 @@ public class DataBaseContext(DbContextOptions<DataBaseContext> options) : DbCont
         modelBuilder.ApplyConfiguration(new TasksListConfiguration());
         modelBuilder.ApplyConfiguration(new ToDoTaskConfiguration());
         modelBuilder.ApplyConfiguration(new SubtaskConfiguration());
+        modelBuilder.ApplyConfiguration(new TagConfiguration());
+        modelBuilder.ApplyConfiguration(new ToDoTaskTagConfiguration());
+        
     }
 }

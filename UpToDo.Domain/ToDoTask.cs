@@ -61,4 +61,10 @@ public class ToDoTask
     /// Навигационное свойство для списка задач.
     /// </summary>
     public TasksList? TasksList { get; set; }
+    
+    /// <summary>
+    /// Теги задачи.
+    /// </summary>
+    public List<ToDoTaskTag> ToDoTaskTags { get; set; } = new();
+
 }
