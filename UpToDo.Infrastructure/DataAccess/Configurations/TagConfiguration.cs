@@ -12,7 +12,12 @@ public class TagConfiguration: IEntityTypeConfiguration<Tag>
         builder.Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(200);
-
+        
+        builder.HasOne(x => x.User)
+            .WithMany()
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
         builder.HasIndex(x => x.Name).IsUnique();
     }
 }

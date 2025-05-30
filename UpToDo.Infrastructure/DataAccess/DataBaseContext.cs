@@ -13,6 +13,8 @@ public class DataBaseContext(DbContextOptions<DataBaseContext> options) : DbCont
     public DbSet<TasksList> TasksLists { get; set; }
     public DbSet<ToDoTask> ToDoTasks { get; set; }
     public DbSet<Subtask> Subtasks { get; set; }
+    public DbSet<Tag> Tags { get; set; }
+    public DbSet<ToDoTaskTag> ToDoTaskTags { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

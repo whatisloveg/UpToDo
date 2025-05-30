@@ -9,23 +9,28 @@ namespace UpToDo.Infrastructure.DataAccess.Configurations;
 /// </summary>
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<User> cfg)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
-        cfg.HasKey(u => u.Id);
+        builder.HasKey(u => u.Id);
 
-        cfg.Property(u => u.Name)
+        builder.Property(u => u.Name)
             .IsRequired()
             .HasMaxLength(255);
 
-        cfg.Property(u => u.Email)
+        builder.Property(u => u.Email)
             .IsRequired()
             .HasMaxLength(255);
 
-        cfg.Property(u => u.PasswordHash)
+        builder.Property(u => u.PasswordHash)
             .IsRequired()
             .HasMaxLength(255);
         
-        cfg.HasMany(u => u.TasksLists)
+        builder.HasMany(x => x.Tags)
+            .WithOne(x => x.User)
+            .HasForeignKey(x => x.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasMany(u => u.TasksLists)
             .WithOne(tl => tl.User)
             .HasForeignKey(tl => tl.UserId)
             .OnDelete(DeleteBehavior.Cascade);

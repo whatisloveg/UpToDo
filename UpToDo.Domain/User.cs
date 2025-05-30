@@ -32,4 +32,9 @@ public class User(string name, string email, string passwordHash)
     /// Список задач, принадлежащих пользователю.
     /// </summary>
     public List<TasksList>? TasksLists { get; set; } = new();
+    
+    /// <summary>
+    /// Список тегов принадлежащих пользователю
+    /// </summary>
+    public List<Tag> Tags { get; set; } = new();
 }

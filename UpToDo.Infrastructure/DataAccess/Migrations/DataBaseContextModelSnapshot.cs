@@ -65,12 +65,22 @@ namespace UpToDo.Infrastructure.DataAccess.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("UserId1")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Tag");
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("UpToDo.Domain.TasksList", b =>
@@ -154,7 +164,7 @@ namespace UpToDo.Infrastructure.DataAccess.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("ToDoTaskTag");
+                    b.ToTable("ToDoTaskTags");
                 });
 
             modelBuilder.Entity("UpToDo.Domain.User", b =>
@@ -192,6 +202,21 @@ namespace UpToDo.Infrastructure.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("ToDoTask");
+                });
+
+            modelBuilder.Entity("UpToDo.Domain.Tag", b =>
+                {
+                    b.HasOne("UpToDo.Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UpToDo.Domain.User", null)
+                        .WithMany("Tags")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UpToDo.Domain.TasksList", b =>
@@ -254,6 +279,8 @@ namespace UpToDo.Infrastructure.DataAccess.Migrations
 
             modelBuilder.Entity("UpToDo.Domain.User", b =>
                 {
+                    b.Navigation("Tags");
+
                     b.Navigation("TasksLists");
                 });
 #pragma warning restore 612, 618

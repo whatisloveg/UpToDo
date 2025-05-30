@@ -19,4 +19,7 @@ public class Tag
     /// Список связей с задачами (многие-ко-многим).
     /// </summary>
     public List<ToDoTaskTag> ToDoTaskTags { get; set; } = new();
+    
+    public Guid UserId { get; set; }                
+    public User User { get; set; } = null!;        
 }
