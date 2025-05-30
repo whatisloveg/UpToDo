@@ -1,4 +1,4 @@
-﻿namespace UpToDo.Hosts.Controllers;
+namespace UpToDo.Hosts.Controllers;
 
 public class TimeZoneController
 {
