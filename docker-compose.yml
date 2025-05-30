@@ -7,13 +7,6 @@ services:
       dockerfile: UpToDo.Hosts/Dockerfile
     image: uptodo.hosts
     container_name: uptodo.hosts
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DataBaseConnectionString=Host=uptodo.postgres;Database=uptodo;Username=postgres;Password=password
-      - Jwt__Key=S3cr3tKey_must_be_32_characters_long
-      - Jwt__Issuer=UpToDo.Auth
-      - Jwt__Audience=UpToDo.Api
-      - Jwt__ExpiresInMinutes=2147483647
     ports:
       - "8080:8080"
       - "8081:8081"
