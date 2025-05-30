@@ -10,7 +10,6 @@ namespace UpToDo.Hosts.Controllers
 {
     [Route("tags")]
     [ApiController]
-    [Authorize]
     public class TagController(IMediator mediator) : ControllerBase
     {
         [HttpGet]

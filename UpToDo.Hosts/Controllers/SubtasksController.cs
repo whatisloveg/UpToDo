@@ -10,7 +10,6 @@ namespace UpToDo.Hosts.Controllers
 {
     [Route("subtasks")]
     [ApiController]
-    [Authorize]
     public class SubtasksController(IMediator mediator) : ControllerBase
     {
         [HttpGet]

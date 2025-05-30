@@ -9,7 +9,6 @@ namespace UpToDo.Hosts.Controllers
 {
     [Route("task-lists")]
     [ApiController]
-    [Authorize]
     public class TaskListController(IMediator mediator) : ControllerBase
     {
         [HttpGet("{id}")]

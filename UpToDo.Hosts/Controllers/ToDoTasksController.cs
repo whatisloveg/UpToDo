@@ -9,7 +9,6 @@ namespace UpToDo.Hosts.Controllers
 {
     [Route("tasks")]
     [ApiController]
-    [Authorize]
     public class ToDoTasksController(IMediator mediator) : ControllerBase
     {
         /// <summary>

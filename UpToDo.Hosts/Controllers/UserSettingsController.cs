@@ -11,7 +11,6 @@ namespace UpToDo.Hosts.Controllers
 {
     [Route("user-settings")]
     [ApiController]
-    [Authorize]
     public class UserSettingsController(IMediator mediator) : ControllerBase
     {
         /// <summary>
