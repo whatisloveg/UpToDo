@@ -86,5 +86,47 @@ namespace UpToDo.Hosts.Controllers
             var response = await mediator.Send(query);
             return Ok(response);
         }
+        
+        
+        /// <summary>
+        /// Добавить тег к задаче
+        /// </summary>
+        [HttpPost("{taskId}/tags/{tagId}")]
+        public async Task<IActionResult> AddTagToTask([FromRoute] Guid taskId, [FromRoute] Guid tagId)
+        {
+            var command = new AddTagToTaskToTagCommand
+            {
+                TaskId = taskId,
+                TagId = tagId
+            };
+            var response = await mediator.Send(command);
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Удалить тег из задачи
+        /// </summary>
+        [HttpDelete("{taskId}/tags/{tagId}")]
+        public async Task<IActionResult> RemoveTagFromTask([FromRoute] Guid taskId, [FromRoute] Guid tagId)
+        {
+            var command = new RemoveTagFromTaskCommand
+            {
+                TaskId = taskId,
+                TagId = tagId
+            };
+            var response = await mediator.Send(command);
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Получить теги задачи
+        /// </summary>
+        [HttpGet("{taskId}/tags")]
+        public async Task<IActionResult> GetTaskTags([FromRoute] Guid taskId)
+        {
+            var query = new GetTaskTagsQuery { TaskId = taskId };
+            var response = await mediator.Send(query);
+            return Ok(response);
+        }
     }
 }

@@ -5,8 +5,7 @@ namespace UpToDo.Application.Shared.Repositories;
 public interface IToDoTaskTagRepository
 {
     Task AddAsync(ToDoTaskTag toDoTaskTag);
-    Task<ToDoTaskTag?> GetByIdsAsync(Guid toDoTaskId, Guid tagId);
-    Task<List<ToDoTaskTag>> GetByTaskIdAsync(Guid toDoTaskId);
-    Task<List<ToDoTaskTag>> GetByTagIdAsync(Guid tagId);
-    Task DeleteAsync(Guid toDoTaskId, Guid tagId);
+    Task<ToDoTaskTag?> GetByIdsAsync(Guid taskId, Guid tagId);
+    Task<List<ToDoTaskTag>> GetByTaskIdAsync(Guid taskId);
+    Task DeleteAsync(Guid taskId, Guid tagId);
 }

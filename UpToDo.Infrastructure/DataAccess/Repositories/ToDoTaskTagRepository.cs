@@ -15,32 +15,26 @@ public class ToDoTaskTagRepository(DataBaseContext context) : IToDoTaskTagReposi
         await context.SaveChangesAsync();
     }
 
-    public async Task<ToDoTaskTag?> GetByIdsAsync(Guid toDoTaskId, Guid tagId)
+    public async Task<ToDoTaskTag?> GetByIdsAsync(Guid taskId, Guid tagId)
     {
         return await context.ToDoTaskTags
-            .FirstOrDefaultAsync(x => x.ToDoTaskId == toDoTaskId && x.TagId == tagId);
+            .Include(x => x.Tag)
+            .FirstOrDefaultAsync(x => x.ToDoTaskId == taskId && x.TagId == tagId);
     }
 
-    public async Task<List<ToDoTaskTag>> GetByTaskIdAsync(Guid toDoTaskId)
+    public async Task<List<ToDoTaskTag>> GetByTaskIdAsync(Guid taskId)
     {
         return await context.ToDoTaskTags
-            .Where(x => x.ToDoTaskId == toDoTaskId)
+            .Where(x => x.ToDoTaskId == taskId)
+            .Include(x => x.Tag)
             .AsNoTracking()
             .ToListAsync();
     }
 
-    public async Task<List<ToDoTaskTag>> GetByTagIdAsync(Guid tagId)
-    {
-        return await context.ToDoTaskTags
-            .Where(x => x.TagId == tagId)
-            .AsNoTracking()
-            .ToListAsync();
-    }
-
-    public async Task DeleteAsync(Guid toDoTaskId, Guid tagId)
+    public async Task DeleteAsync(Guid taskId, Guid tagId)
     {
         var entity = await context.ToDoTaskTags
-            .FirstOrDefaultAsync(x => x.ToDoTaskId == toDoTaskId && x.TagId == tagId);
+            .FirstOrDefaultAsync(x => x.ToDoTaskId == taskId && x.TagId == tagId);
         if (entity != null)
         {
             context.ToDoTaskTags.Remove(entity);

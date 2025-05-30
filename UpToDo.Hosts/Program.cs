@@ -63,6 +63,7 @@ builder.Services.AddScoped<ITasksListRepository, TasksListRepository>();
 builder.Services.AddScoped<IPasswordHasher, BcryptHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<IToDoTaskTagRepository, ToDoTaskTagRepository>();
 
 
 
@@ -95,6 +96,10 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<UpdateTagCommand>();
     cfg.RegisterServicesFromAssemblyContaining<GetAllUserTagsQuery>();
     cfg.RegisterServicesFromAssemblyContaining<GetTagByIdQuery>();
+    
+    cfg.RegisterServicesFromAssemblyContaining<AddTagToTaskToTagCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<RemoveTagFromTaskCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<GetTaskTagsQuery>();
 });
 
 var app = builder.Build();
