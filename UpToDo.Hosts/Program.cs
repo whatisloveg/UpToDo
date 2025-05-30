@@ -8,6 +8,8 @@ using UpToDo.Application.Shared.Exceptions;
 using UpToDo.Application.Shared.Repositories;
 using UpToDo.Application.Subtasks.Commands;
 using UpToDo.Application.Subtasks.Queries;
+using UpToDo.Application.Tags.Commands;
+using UpToDo.Application.Tags.Queries;
 using UpToDo.Application.Tasks.Commands;
 using UpToDo.Application.Tasks.Queries;
 using UpToDo.Application.TasksLists.Commands;
@@ -60,6 +62,7 @@ builder.Services.AddScoped<ITasksListRepository, TasksListRepository>();
 
 builder.Services.AddScoped<IPasswordHasher, BcryptHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
 
 
 
@@ -86,6 +89,12 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<UpdateSubtaskCommand>();
     cfg.RegisterServicesFromAssemblyContaining<GetSubtaskByIdQuery>();
     cfg.RegisterServicesFromAssemblyContaining<GetSubtasksByTaskIdQuery>();
+    
+    cfg.RegisterServicesFromAssemblyContaining<CreateTagCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<DeleteTagCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<UpdateTagCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<GetAllUserTagsQuery>();
+    cfg.RegisterServicesFromAssemblyContaining<GetTagByIdQuery>();
 });
 
 var app = builder.Build();

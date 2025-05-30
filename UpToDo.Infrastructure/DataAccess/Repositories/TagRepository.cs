@@ -17,12 +17,14 @@ public class TagRepository(DataBaseContext context): ITagRepository
         return await context.Tags.FindAsync(id);
     }
 
-    public async Task<List<Tag>> GetAllAsync()
+    public async Task<List<Tag>> GetAllByUserIdAsync(Guid userId)
     {
         return await context.Tags
+            .Where(t => t.UserId == userId)
             .AsNoTracking()
             .ToListAsync();
     }
+
 
     public async Task UpdateAsync(Tag tag)
     {

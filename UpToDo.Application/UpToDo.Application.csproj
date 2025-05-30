@@ -15,8 +15,4 @@
       <ProjectReference Include="..\UpToDo.Domain\UpToDo.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Tags\Queries\" />
-    </ItemGroup>
-
 </Project>
