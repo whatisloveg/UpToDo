@@ -36,6 +36,9 @@ builder.Services.Configure<JwtSettings>(
 var jwtKey = builder.Configuration["Jwt:Key"];
 Console.WriteLine("JWT KEY (debug): " + jwtKey);
 
+var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>();
+Console.WriteLine($"[DEBUG] JwtSettings: Key={jwtSettings?.Key}, Issuer={jwtSettings?.Issuer}, Audience={jwtSettings?.Audience}, Expires={jwtSettings?.ExpiresInMinutes}");
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
