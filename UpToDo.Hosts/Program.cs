@@ -33,6 +33,10 @@ builder.Services.AddControllers();
 builder.Services.Configure<JwtSettings>(
     builder.Configuration.GetSection("Jwt"));
 
+var jwtKey = builder.Configuration["Jwt:Key"];
+Console.WriteLine("JWT KEY (debug): " + jwtKey);
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
