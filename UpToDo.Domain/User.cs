@@ -42,4 +42,9 @@ public class User(string name, string email, string passwordHash)
     /// Настройки пользователя
     /// </summary>
     public UserSettings? Settings { get; set; }
+    
+    /// <summary>
+    /// Отзывы пользователя о приложении
+    /// </summary>
+    public List<AppReview> AppReviews { get; set; } = new();
 }

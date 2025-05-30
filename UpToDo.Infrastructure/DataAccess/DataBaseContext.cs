@@ -17,6 +17,7 @@ public class DataBaseContext(DbContextOptions<DataBaseContext> options) : DbCont
     public DbSet<ToDoTaskTag> ToDoTaskTags { get; set; }
     public DbSet<UserSettings> UserSettings { get; set; }
     public DbSet<TimeZoneItem> TimeZoneItems { get; set; }
+    public DbSet<AppReview> AppReviews { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
