@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using UpToDo.Application.AppReviews.Commands;
 using UpToDo.Application.Shared.Common;
 using UpToDo.Application.Shared.Exceptions;
 using UpToDo.Application.Shared.Repositories;
@@ -66,6 +67,7 @@ builder.Services.AddScoped<ITagRepository, TagRepository>();
 builder.Services.AddScoped<IToDoTaskTagRepository, ToDoTaskTagRepository>();
 builder.Services.AddScoped<ITimeZoneItemRepository, TimeZoneItemRepository>();
 builder.Services.AddScoped<IUserSettingsRepository, UserSettingsRepository>();
+builder.Services.AddScoped<IAppReviewRepository, AppReviewRepository>();
 
 builder.Services.AddScoped<IPasswordHasher, BcryptHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
@@ -111,6 +113,8 @@ builder.Services.AddMediatR(cfg =>
     
     cfg.RegisterServicesFromAssemblyContaining<GetUserSettingsQuery>();
     cfg.RegisterServicesFromAssemblyContaining<UpdateUserSettingsCommand>();
+    
+    cfg.RegisterServicesFromAssemblyContaining<CreateAppReviewCommand>();
 });
 
 var app = builder.Build();
