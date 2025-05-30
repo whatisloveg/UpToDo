@@ -1,6 +1,37 @@
-﻿services:
+﻿version: '3.9'
+
+services:
   uptodo.hosts:
-    image: uptodo.hosts
     build:
       context: .
       dockerfile: UpToDo.Hosts/Dockerfile
+    image: uptodo.hosts
+    container_name: uptodo.hosts
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DataBaseConnectionString=Host=uptodo.postgres;Database=uptodo;Username=postgres;Password=password
+      - Jwt__Key=S3cr3tKey_must_be_32_characters_long
+      - Jwt__Issuer=UpToDo.Auth
+      - Jwt__Audience=UpToDo.Api
+      - Jwt__ExpiresInMinutes=2147483647
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - uptodo.postgres
+
+  uptodo.postgres:
+    image: postgres:15-alpine
+    container_name: uptodo.postgres
+    restart: always
+    environment:
+      POSTGRES_DB: uptodo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5444:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
