@@ -37,4 +37,9 @@ public class User(string name, string email, string passwordHash)
     /// Список тегов принадлежащих пользователю
     /// </summary>
     public List<Tag> Tags { get; set; } = new();
+    
+    /// <summary>
+    /// Настройки пользователя
+    /// </summary>
+    public UserSettings? Settings { get; set; }
 }

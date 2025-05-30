@@ -15,6 +15,8 @@ public class DataBaseContext(DbContextOptions<DataBaseContext> options) : DbCont
     public DbSet<Subtask> Subtasks { get; set; }
     public DbSet<Tag> Tags { get; set; }
     public DbSet<ToDoTaskTag> ToDoTaskTags { get; set; }
+    public DbSet<UserSettings> UserSettings { get; set; }
+    public DbSet<TimeZoneItem> TimeZoneItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -26,6 +28,8 @@ public class DataBaseContext(DbContextOptions<DataBaseContext> options) : DbCont
         modelBuilder.ApplyConfiguration(new SubtaskConfiguration());
         modelBuilder.ApplyConfiguration(new TagConfiguration());
         modelBuilder.ApplyConfiguration(new ToDoTaskTagConfiguration());
+        modelBuilder.ApplyConfiguration(new UserSettingsConfiguration());
+        modelBuilder.ApplyConfiguration(new TimeZoneInfoConfiguration());
         
     }
 }
