@@ -30,11 +30,4 @@
       <ProjectReference Include="..\UpToDo.Infrastructure\UpToDo.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Areas\TagController\Controllers\" />
-      <Folder Include="Areas\TagController\Data\" />
-      <Folder Include="Areas\TagController\Models\" />
-      <Folder Include="Areas\TagController\Views\" />
-    </ItemGroup>
-
 </Project>

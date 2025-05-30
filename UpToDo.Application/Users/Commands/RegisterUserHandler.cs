@@ -12,6 +12,7 @@ namespace UpToDo.Application.Users.Commands;
 /// </summary>
 public class RegisterUserHandler(
     IUsersRepository usersRepository,
+    IUserSettingsRepository userSettingsRepository,
     IPasswordHasher passwordHasher,
     IJwtTokenGenerator jwtTokenGenerator)
     : IRequestHandler<RegisterUserCommand, TokenResponse>
@@ -34,6 +35,17 @@ public class RegisterUserHandler(
         
         var user = new User(command.Name, command.Email, passwordHasher.Hash(command.Password));
         await usersRepository.AddAsync(user, ct);
+        
+        var settings = new Domain.UserSettings
+        {
+            Id = Guid.NewGuid(),
+            UserId = user.Id,
+            TimeZoneItemId = 1,
+            CompanyNotificationsEnabled = true
+        };
+        await userSettingsRepository.AddAsync(settings, ct);
+
+        
         return new(jwtTokenGenerator.Generate(user), user.Id);
     }
 }

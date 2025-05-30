@@ -16,6 +16,8 @@ using UpToDo.Application.TasksLists.Commands;
 using UpToDo.Application.TasksLists.Queries;
 using UpToDo.Application.TimeZones.Queries;
 using UpToDo.Application.Users.Commands;
+using UpToDo.Application.UserSettings.Commands;
+using UpToDo.Application.UserSettings.Queries;
 using UpToDo.Infrastructure.DataAccess;
 using UpToDo.Infrastructure.DataAccess.Repositories;
 using UpToDo.Infrastructure.Identity;
@@ -60,12 +62,14 @@ builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IToDoTaskRepository, ToDoTaskRepository>();
 builder.Services.AddScoped<ISubtaskRepository, SubtaskRepository>();
 builder.Services.AddScoped<ITasksListRepository, TasksListRepository>();
+builder.Services.AddScoped<ITagRepository, TagRepository>();
+builder.Services.AddScoped<IToDoTaskTagRepository, ToDoTaskTagRepository>();
 builder.Services.AddScoped<ITimeZoneItemRepository, TimeZoneItemRepository>();
+builder.Services.AddScoped<IUserSettingsRepository, UserSettingsRepository>();
 
 builder.Services.AddScoped<IPasswordHasher, BcryptHasher>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-builder.Services.AddScoped<ITagRepository, TagRepository>();
-builder.Services.AddScoped<IToDoTaskTagRepository, ToDoTaskTagRepository>();
+
 
 
 
@@ -104,6 +108,9 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<GetTaskTagsQuery>();
     
     cfg.RegisterServicesFromAssemblyContaining<GetAllTimeZoneItemsQuery>();
+    
+    cfg.RegisterServicesFromAssemblyContaining<GetUserSettingsQuery>();
+    cfg.RegisterServicesFromAssemblyContaining<UpdateUserSettingsCommand>();
 });
 
 var app = builder.Build();
