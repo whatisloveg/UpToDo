@@ -36,6 +36,11 @@ public class UpdateToDoTaskCommandHandler(IToDoTaskRepository repository) : IReq
             task.CompletedAt = DateTime.UtcNow;
         }
         
+        if (request.MatrixPriority != null)
+        {
+            task.MatrixPriority = request.MatrixPriority;
+        }
+        
         await repository.UpdateAsync(task);
         return new UpdateToDoTaskResponse(true); 
     }

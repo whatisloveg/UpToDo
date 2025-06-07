@@ -1,8 +1,8 @@
 ﻿namespace UpToDo.Contracts.Tasks.Requests;
 
-/// <summary>
+/// <summary>   
 /// Запрос на получение задачи по ID.
 /// </summary>
 public record GetToDoTaskByIdRequest(
-    Guid Id  // Идентификатор задачи
+    Guid Id  
 );

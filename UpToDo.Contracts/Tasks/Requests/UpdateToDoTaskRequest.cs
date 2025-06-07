@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using UpToDo.Domain.Enums;
 
 namespace UpToDo.Contracts.Tasks.Requests;
 
@@ -6,9 +7,10 @@ namespace UpToDo.Contracts.Tasks.Requests;
 /// Запрос на обновление задачи.
 /// </summary>
 public record UpdateToDoTaskRequest(
-    Guid Id,  // Идентификатор задачи
-    string? Name,  // Название задачи
-    string? Description, // Описание задачи
-    decimal? EstimatedTime, // Время, выделенное на задачу
-    bool IsCompleted // Статус выполнения задачи
+    Guid Id,  
+    string? Name,  
+    string? Description,
+    decimal? EstimatedTime, 
+    bool IsCompleted,
+    TaskMatrixPriority? MatrixPriority
 );

@@ -46,6 +46,6 @@ public class RegisterUserHandler(
         await userSettingsRepository.AddAsync(settings, ct);
 
         
-        return new(jwtTokenGenerator.Generate(user), user.Id);
+        return new(jwtTokenGenerator.Generate(user), user.Id, user.Name, user.Email);
     }
 }

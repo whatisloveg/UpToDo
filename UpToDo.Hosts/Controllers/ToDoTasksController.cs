@@ -52,12 +52,13 @@ namespace UpToDo.Hosts.Controllers
                 return BadRequest("Id - обязательный параметр");
             }
             var command = new UpdateToDoTaskCommand
-            {
+            {   
                 Id = request.Id,
                 Name = request.Name,
                 Description = request.Description,
                 EstimatedTime = request.EstimatedTime,
-                IsCompleted = request.IsCompleted
+                IsCompleted = request.IsCompleted,
+                MatrixPriority = request.MatrixPriority
             };
 
             var response = await mediator.Send(command);

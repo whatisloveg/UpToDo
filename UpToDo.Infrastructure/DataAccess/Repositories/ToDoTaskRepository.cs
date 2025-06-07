@@ -3,7 +3,7 @@ using UpToDo.Application.Shared.Repositories;
 using UpToDo.Domain;
 
 namespace UpToDo.Infrastructure.DataAccess.Repositories;
-
+    
 /// <summary>
 /// Репозиторий для работы с задачами.
 /// </summary>

@@ -26,6 +26,11 @@ public class UpdateSubtaskCommandHandler(ISubtaskRepository repository) : IReque
             subtask.IsCompleted = request.IsCompleted;
             subtask.CompletedAt = DateTime.UtcNow;
         }
+        else
+        {
+            subtask.IsCompleted = request.IsCompleted;
+            subtask.CompletedAt = null;
+        }
         
 
         await repository.UpdateAsync(subtask);

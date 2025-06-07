@@ -4,5 +4,5 @@
 /// Запрос на удаление задачи.
 /// </summary>
 public sealed record DeleteToDoTaskRequest(
-    Guid Id // Идентификатор задачи
+    Guid Id 
 );
